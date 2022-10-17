@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.ovo.infrastructure.web.config.InfrastructureWebAutoConfig
+  cn.me.ppx.infrastructure.web.config.InfrastructureWebAutoConfig

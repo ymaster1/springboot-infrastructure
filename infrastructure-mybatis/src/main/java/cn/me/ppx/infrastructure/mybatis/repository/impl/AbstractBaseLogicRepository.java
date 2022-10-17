@@ -4,7 +4,7 @@ package cn.me.ppx.infrastructure.mybatis.repository.impl;
 import cn.me.ppx.infrastructure.mybatis.entity.BaseLogicEntity;
 import cn.me.ppx.infrastructure.mybatis.repository.BaseRepository;
 import com.github.pagehelper.PageInfo;
-import com.ovo.platform.mybatis.model.DeletedEnum;
+import cn.me.ppx.infrastructure.mybatis.model.DeletedEnum;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.Serializable;

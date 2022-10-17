@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>cn.me.ppx</groupId>
     <artifactId>infrastructure</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
     <name>infrastructure</name>
     <description>infrastructure</description>
     <packaging>pom</packaging>
@@ -20,6 +20,7 @@
     </modules>
     <properties>
         <java.version>1.8</java.version>
+        <kotlin.version>1.6.21</kotlin.version>
         <project.build.sourceencoding>utf-8</project.build.sourceencoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -48,13 +49,13 @@
         <log4j.version>1.2.17</log4j.version>
         <kni4j.version>3.0.3</kni4j.version>
         <!--        infra-->
-        <web.version>1.0.0-SNAPSHOT</web.version>
-        <rpc.version>1.0.0-SNAPSHOT</rpc.version>
-        <common.version>1.0.0-SNAPSHOT</common.version>
-        <mybatis.version>1.0.0-SNAPSHOT</mybatis.version>
-        <redis.version>1.0.0-SNAPSHOT</redis.version>
-        <kafka.version>1.0.0-SNAPSHOT</kafka.version>
-        <rbac.version>1.0.0-SNAPSHOT</rbac.version>
+        <web.version>1.0.0</web.version>
+        <rpc.version>1.0.0</rpc.version>
+        <common.version>1.0.0</common.version>
+        <mybatis.version>1.0.0</mybatis.version>
+        <redis.version>1.0.0</redis.version>
+        <kafka.version>1.0.0</kafka.version>
+        <rbac.version>1.0.0</rbac.version>
     </properties>
     <dependencies>
         <!--        kotlin-->
@@ -248,11 +249,12 @@
                 <plugin>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
-                    <version>2.0.1.RELEASE</version>
+                    <version>${spring-boot.version}</version>
                 </plugin>
             </plugins>
         </pluginManagement>
         <plugins>
+            <!--            kotlin build -->
             <plugin>
                 <groupId>org.jetbrains.kotlin</groupId>
                 <artifactId>kotlin-maven-plugin</artifactId>
@@ -265,20 +267,23 @@
                         </goals>
                     </execution>
                 </executions>
+                <configuration>
+                    <args>
+                        <arg>-Xjsr305=strict</arg>
+                    </args>
+                    <compilerPlugins>
+                        <plugin>spring</plugin>
+                    </compilerPlugins>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.jetbrains.kotlin</groupId>
+                        <artifactId>kotlin-maven-allopen</artifactId>
+                        <version>${kotlin.version}</version>
+                    </dependency>
+                </dependencies>
             </plugin>
+
         </plugins>
     </build>
-
-    <distributionManagement>
-        <repository>
-            <id>releases</id>
-            <name>releases</name>
-            <url>http://nexus.ovometa.group:8081/nexus/repository/maven-releases/</url>
-        </repository>
-        <snapshotRepository>
-            <id>snapshots</id>
-            <name>snapshots</name>
-            <url>http://nexus.ovometa.group:8081/nexus/repository/maven-snapshots/</url>
-        </snapshotRepository>
-    </distributionManagement>
 </project>

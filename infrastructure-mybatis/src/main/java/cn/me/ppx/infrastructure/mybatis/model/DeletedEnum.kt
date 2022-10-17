@@ -1,4 +1,4 @@
-package com.ovo.platform.mybatis.model
+package cn.me.ppx.infrastructure.mybatis.model
 
 /**
  * @author  ym
