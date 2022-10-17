@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>cn.me.ppx</groupId>
+        <artifactId>infrastructure</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+        <!-- lookup parent from repository -->
+    </parent>
+
+    <artifactId>infrastructure-mybatis</artifactId>
+    <version>${mybatis.version}</version>
+    <name>infrastructure-mybatis</name>
+    <description>infrastructure-mybatis</description>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <mybatis-generator-extension.version>0.0.4</mybatis-generator-extension.version>
+        <mybatis-generator.version>1.3.7</mybatis-generator.version>
+        <dep.mybatis-generator-maven-plugin.version>1.4.1</dep.mybatis-generator-maven-plugin.version>
+        <dep.mysql-driver.version>8.0.29</dep.mysql-driver.version>
+    </properties>
+    <dependencies>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>tk.mybatis</groupId>
+            <artifactId>mapper-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.me.ppx</groupId>
+            <artifactId>infrastructure-common</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mybatis.generator</groupId>
+            <artifactId>mybatis-generator-core</artifactId>
+            <version>${mybatis-generator.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.drtrang</groupId>
+            <artifactId>mybatis-generator-extension</artifactId>
+            <version>${mybatis-generator-extension.version}</version>
+        </dependency>
+
+
+    </dependencies>
+
+
+</project>

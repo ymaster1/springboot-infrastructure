@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/ovo_baas?useUnicode=true&characterEncoding=utf8&autoReconnect=true&failOverReadOnly=false&useSSL=true&useAffectedRows=true&serverTimezone=Asia/Shanghai
+    username: root
+    password: ym3.1415926...
+  jackson:
+    default-property-inclusion: non_null
+server:
+  port: 8081

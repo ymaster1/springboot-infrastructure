@@ -1,167 +1,284 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>cn.me.ppx</groupId>
-    <artifactId>web-infrastructure-parent</artifactId>
-    <version>1.0.0</version>
+    <artifactId>infrastructure</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <name>infrastructure</name>
+    <description>infrastructure</description>
     <packaging>pom</packaging>
-    <name>web-infrastructure</name>
-
-    <parent>
-        <artifactId>infrastructure</artifactId>
-        <groupId>com.ovo.platform</groupId>
-        <version>1.0.0</version>
-    </parent>
-
-    <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>${maven.compiler.source}</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <maven.deploy.skip>true</maven.deploy.skip>
-        <cola.components.version>4.3.1</cola.components.version>
-        <mybatis-starter.version>2.2.2</mybatis-starter.version>
-        <!-- infra-->
-        <infra-web.version>1.0.0</infra-web.version>
-    </properties>
 
     <modules>
-        <module>web-infrastructure-client</module>
-        <module>web-infrastructure-adapter</module>
-        <module>web-infrastructure-app</module>
-        <module>web-infrastructure-domain</module>
-        <module>web-infrastructure-infrastructure</module>
-        <module>start</module>
+        <module>infrastructure-web</module>
+        <module>infrastructure-common</module>
+        <module>infrastructure-sample</module>
+        <module>infrastructure-mybatis</module>
+        <module>infrastructure-redis</module>
+        <module>infrastructure-kafka</module>
+        <module>infrastructure-rbac</module>
     </modules>
+    <properties>
+        <java.version>1.8</java.version>
+        <project.build.sourceencoding>utf-8</project.build.sourceencoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
 
+        <!--版本确认todo-->
+        <spring-boot.version>2.5.14</spring-boot.version>
+        <spring-cloud.version>2021.0.4</spring-cloud.version>
+        <spring-cloud-alibaba.version>2021.1</spring-cloud-alibaba.version>
 
+        <redisson-spring-boot-starter-version>3.13.5</redisson-spring-boot-starter-version>
+        <commons-lang3.version>3.11</commons-lang3.version>
+        <commons-collections4.version>4.4</commons-collections4.version>
+        <commons.io.version>2.8.0</commons.io.version>
+        <commons-beanutils.version>1.9.4</commons-beanutils.version>
+        <mapstruct.version>1.4.2.Final</mapstruct.version>
+        <sl4fj.version>1.7.36</sl4fj.version>
+        <lombok.version>1.18.12</lombok.version>
+        <mybatis-starter.version>2.2.2</mybatis-starter.version>
+        <tk.mybatis.version>2.1.5</tk.mybatis.version>
+        <pagehelper.boot.version>1.4.1</pagehelper.boot.version>
+        <okhttp.version>4.9.3</okhttp.version>
+
+        <fastjson.version>1.2.73</fastjson.version>
+        <xxl-job.version>2.3.1</xxl-job.version>
+        <guava.version>29.0-jre</guava.version>
+        <log4j.version>1.2.17</log4j.version>
+        <kni4j.version>3.0.3</kni4j.version>
+        <!--        infra-->
+        <web.version>1.0.0-SNAPSHOT</web.version>
+        <rpc.version>1.0.0-SNAPSHOT</rpc.version>
+        <common.version>1.0.0-SNAPSHOT</common.version>
+        <mybatis.version>1.0.0-SNAPSHOT</mybatis.version>
+        <redis.version>1.0.0-SNAPSHOT</redis.version>
+        <kafka.version>1.0.0-SNAPSHOT</kafka.version>
+        <rbac.version>1.0.0-SNAPSHOT</rbac.version>
+    </properties>
     <dependencies>
+        <!--        kotlin-->
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <scope>provided</scope>
+            <groupId>com.fasterxml.jackson.module</groupId>
+            <artifactId>jackson-module-kotlin</artifactId>
         </dependency>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-reflect</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.ovo.platform</groupId>
-            <artifactId>infrastructure-web</artifactId>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-stdlib-jdk8</artifactId>
         </dependency>
     </dependencies>
 
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>com.ovo.platform</groupId>
+                <groupId>cn.me.ppx</groupId>
                 <artifactId>infrastructure-web</artifactId>
-                <version>${infra-web.version}</version>
-            </dependency>
-            <!--Project modules-->
-            <dependency>
-                <groupId>cn.me.ppx</groupId>
-                <artifactId>web-infrastructure-adapter</artifactId>
-                <version>${project.version}</version>
+                <version>${web.version}</version>
             </dependency>
             <dependency>
                 <groupId>cn.me.ppx</groupId>
-                <artifactId>web-infrastructure-client</artifactId>
-                <version>${project.version}</version>
+                <artifactId>infrastructure-common</artifactId>
+                <version>${common.version}</version>
             </dependency>
             <dependency>
                 <groupId>cn.me.ppx</groupId>
-                <artifactId>web-infrastructure-app</artifactId>
-                <version>${project.version}</version>
+                <artifactId>infrastructure-mybatis</artifactId>
+                <version>${mybatis.version}</version>
             </dependency>
             <dependency>
                 <groupId>cn.me.ppx</groupId>
-                <artifactId>web-infrastructure-domain</artifactId>
-                <version>${project.version}</version>
+                <artifactId>infrastructure-redis</artifactId>
+                <version>${redis.version}</version>
             </dependency>
             <dependency>
                 <groupId>cn.me.ppx</groupId>
-                <artifactId>web-infrastructure-infrastructure</artifactId>
-                <version>${project.version}</version>
+                <artifactId>infrastructure-kafka</artifactId>
+                <version>${kafka.version}</version>
             </dependency>
-            <!--Project modules End-->
+            <dependency>
+                <groupId>cn.me.ppx</groupId>
+                <artifactId>infrastructure-rbac</artifactId>
+                <version>${rbac.version}</version>
+            </dependency>
+            <!-- spring/spring-cloud -->
 
             <dependency>
-                <groupId>com.alibaba.cola</groupId>
-                <artifactId>cola-components-bom</artifactId>
-                <version>${cola.components.version}</version>
+                <!-- Import dependency management from Spring Boot -->
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <!--            <dependency>-->
-            <!--                <groupId>org.springframework.boot</groupId>-->
-            <!--                <artifactId>spring-boot-dependencies</artifactId>-->
-            <!--                <version>${spring-boot.version}</version>-->
-            <!--                <type>pom</type>-->
-            <!--                <scope>import</scope>-->
-            <!--            </dependency>-->
-            <!--            <dependency>-->
-            <!--                <groupId>org.mybatis.spring.boot</groupId>-->
-            <!--                <artifactId>mybatis-spring-boot-starter</artifactId>-->
-            <!--                <version>${mybatis-starter.version}</version>-->
-            <!--            </dependency>-->
-
-            <!--Validation API-->
-            <!--
-                - javax.validation:javax.validation
-                - org.hibernate.validator:hibernate-validator
-                - org.glassfish:jakarta.el
-                are declared in spring-boot-dependencies
-            -->
             <dependency>
-                <groupId>javax.el</groupId>
-                <artifactId>javax.el-api</artifactId>
-                <version>3.0.0</version>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
-            <!--Validation API End -->
+            <dependency>
+                <!-- Import dependency management from Spring Boot -->
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring-cloud-alibaba.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
 
-            <!-- Misc -->
+            <dependency>
+                <groupId>log4j</groupId>
+                <artifactId>log4j</artifactId>
+                <version>${log4j.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${sl4fj.version}</version>
+            </dependency>
+
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>fastjson</artifactId>
-                <version>1.2.83</version>
+                <version>${fastjson.version}</version>
             </dependency>
-            <!-- Misc End -->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-lang3.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons.io.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-beanutils</groupId>
+                <artifactId>commons-beanutils</artifactId>
+                <version>${commons-beanutils.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-collections4</artifactId>
+                <version>${commons-collections4.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct</artifactId>
+                <version>${mapstruct.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct-processor</artifactId>
+                <version>${mapstruct.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.squareup.okhttp3</groupId>
+                <artifactId>okhttp</artifactId>
+                <version>${okhttp.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.squareup.okhttp3</groupId>
+                <artifactId>logging-interceptor</artifactId>
+                <version>${okhttp.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson-spring-boot-starter</artifactId>
+                <version>${redisson-spring-boot-starter-version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+            </dependency>
+
+            <!-- mybatis-->
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>${mybatis-starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>tk.mybatis</groupId>
+                <artifactId>mapper-spring-boot-starter</artifactId>
+                <version>${tk.mybatis.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper-spring-boot-starter</artifactId>
+                <version>${pagehelper.boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-spring-boot-starter</artifactId>
+                <version>${kni4j.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.xuxueli</groupId>
+                <artifactId>xxl-job-core</artifactId>
+                <version>${xxl-job.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
-
     <build>
         <pluginManagement>
             <plugins>
-                <!--                <plugin>-->
-                <!--                    <artifactId>maven-resources-plugin</artifactId>-->
-                <!--                    <version>3.3.0</version>-->
-                <!--                </plugin>-->
-                <!--                <plugin>-->
-                <!--                    <artifactId>maven-compiler-plugin</artifactId>-->
-                <!--                    <version>3.10.1</version>-->
-                <!--                </plugin>-->
-                <!--                <plugin>-->
-                <!--                    <artifactId>maven-source-plugin</artifactId>-->
-                <!--                    <version>3.2.1</version>-->
-                <!--                </plugin>-->
-                <!--                <plugin>-->
-                <!--                    <artifactId>maven-javadoc-plugin</artifactId>-->
-                <!--                    <version>3.4.0</version>-->
-                <!--                </plugin>-->
-                <!--                <plugin>-->
-                <!--                     <artifactId>maven-deploy-plugin</artifactId>-->
-                <!--                    <version>3.0.0</version>-->
-                <!--                </plugin>-->
-
                 <plugin>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>2.0.1.RELEASE</version>
                 </plugin>
             </plugins>
         </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.jetbrains.kotlin</groupId>
+                <artifactId>kotlin-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>compile</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
     </build>
+
+    <distributionManagement>
+        <repository>
+            <id>releases</id>
+            <name>releases</name>
+            <url>http://nexus.ovometa.group:8081/nexus/repository/maven-releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>snapshots</name>
+            <url>http://nexus.ovometa.group:8081/nexus/repository/maven-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
 </project>
