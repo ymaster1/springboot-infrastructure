@@ -21,6 +21,7 @@
     <properties>
         <java.version>1.8</java.version>
         <kotlin.version>1.6.21</kotlin.version>
+        <jackson-module-kotlin.version>2.12.6</jackson-module-kotlin.version>
         <project.build.sourceencoding>utf-8</project.build.sourceencoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -104,6 +105,22 @@
                 <groupId>cn.me.ppx</groupId>
                 <artifactId>infrastructure-rbac</artifactId>
                 <version>${rbac.version}</version>
+            </dependency>
+            <!--            kotlin-->
+            <dependency>
+                <groupId>com.fasterxml.jackson.module</groupId>
+                <artifactId>jackson-module-kotlin</artifactId>
+                <version>${jackson-module-kotlin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jetbrains.kotlin</groupId>
+                <artifactId>kotlin-reflect</artifactId>
+                <version>${kotlin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jetbrains.kotlin</groupId>
+                <artifactId>kotlin-stdlib-jdk8</artifactId>
+                <version>${kotlin.version}</version>
             </dependency>
             <!-- spring/spring-cloud -->
 
