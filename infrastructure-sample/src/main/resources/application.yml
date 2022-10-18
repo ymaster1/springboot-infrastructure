@@ -1,3 +1,6 @@
+application:
+  version: 1.0.0
+  name: infrastructure
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver

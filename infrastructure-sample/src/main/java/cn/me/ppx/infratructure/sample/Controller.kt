@@ -6,7 +6,10 @@ import cn.me.ppx.infrastructure.web.framework.web.BaseController
 import cn.me.ppx.infratructure.sample.entity.SysApp
 import cn.me.ppx.infratructure.sample.entity.Test
 import cn.me.ppx.infratructure.sample.service.AppService
+import io.swagger.annotations.Api
+import io.swagger.annotations.ApiOperation
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
@@ -15,22 +18,26 @@ import org.springframework.web.bind.annotation.RestController
  * @date  2022/10/14 9:51
  *
  */
-
+@Api(tags = ["测试"])
 @RestController
 class Controller : BaseController() {
     @Autowired
     private lateinit var appService: AppService
 
-    @RequestMapping("/test1")
+    @GetMapping("/test1")
+    @ApiOperation("返回Test")
     fun test1(): BaseResponse<Test> {
         return build(appService.test1())
     }
 
-    @RequestMapping("/test")
+    @GetMapping("/test")
+    @ApiOperation("返回SysApp")
     fun test(): BaseResponse<SysApp> {
         return build(appService.test())
     }
 
+    @GetMapping("/page")
+    @ApiOperation("返回页")
     fun page(): BaseResponse<PageInfoModel<Test>> {
         return build(PageInfoModel.valueOf(listOf()))
     }

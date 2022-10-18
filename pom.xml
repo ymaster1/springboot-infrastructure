@@ -26,9 +26,8 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
 
-        <!--版本确认todo-->
         <spring-boot.version>2.5.14</spring-boot.version>
-        <spring-cloud.version>2021.0.4</spring-cloud.version>
+        <spring-cloud.version>2020.0.5</spring-cloud.version>
         <spring-cloud-alibaba.version>2021.1</spring-cloud-alibaba.version>
 
         <redisson-spring-boot-starter-version>3.13.5</redisson-spring-boot-starter-version>
@@ -43,6 +42,8 @@
         <tk.mybatis.version>2.1.5</tk.mybatis.version>
         <pagehelper.boot.version>1.4.1</pagehelper.boot.version>
         <okhttp.version>4.9.3</okhttp.version>
+        <modelmapper.version>2.3.8</modelmapper.version>
+        <hutool.version>5.8.8</hutool.version>
 
         <fastjson.version>1.2.73</fastjson.version>
         <xxl-job.version>2.3.1</xxl-job.version>
@@ -208,6 +209,11 @@
                 <version>${mapstruct.version}</version>
             </dependency>
             <dependency>
+                <groupId>org.modelmapper</groupId>
+                <artifactId>modelmapper</artifactId>
+                <version>${modelmapper.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>com.squareup.okhttp3</groupId>
                 <artifactId>okhttp</artifactId>
                 <version>${okhttp.version}</version>
@@ -228,6 +234,11 @@
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
                 <version>${guava.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool.version}</version>
             </dependency>
 
             <!-- mybatis-->

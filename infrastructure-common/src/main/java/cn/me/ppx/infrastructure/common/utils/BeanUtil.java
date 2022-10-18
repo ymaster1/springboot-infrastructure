@@ -38,6 +38,7 @@ public final class BeanUtil {
         return targetObj;
     }
 
+
     public static String[] getNullPropertyNames (Object source) {
         final BeanWrapper beanWrapper = new BeanWrapperImpl(source);
         PropertyDescriptor[] pds = beanWrapper.getPropertyDescriptors();
