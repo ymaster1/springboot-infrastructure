@@ -4,44 +4,14 @@ import cn.me.ppx.infrastructure.common.dto.BaseObject;
 import cn.me.ppx.infrastructure.common.serializer.JsonDateSerialize;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
 
-
+@Data
 public class BaseLogicEntity extends BaseObject {
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Date getGmtCreate() {
-        return gmtCreate;
-    }
-
-    public void setGmtCreate(Date gmtCreate) {
-        this.gmtCreate = gmtCreate;
-    }
-
-    public Date getGmtModified() {
-        return gmtModified;
-    }
-
-    public void setGmtModified(Date gmtModified) {
-        this.gmtModified = gmtModified;
-    }
-
-    public Byte getIsDelete() {
-        return isDelete;
-    }
-
-    public void setIsDelete(Byte isDelete) {
-        this.isDelete = isDelete;
-    }
 
     /**
      * 实体Id

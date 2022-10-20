@@ -7,9 +7,13 @@ import cn.me.ppx.infrastructure.common.modelmapper.jsr310.Jsr310ModuleConfig;
 import org.apache.commons.collections4.CollectionUtils;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.BeanWrapper;
+import org.springframework.beans.BeanWrapperImpl;
 import org.springframework.cglib.beans.BeanMap;
 import org.springframework.objenesis.instantiator.util.ClassUtils;
 
+import java.beans.PropertyDescriptor;
 import java.time.ZoneOffset;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -132,12 +136,41 @@ public class BeanConverter {
 
     /**
      * 单个对象转换
-     *
+     * modelmapper使用的是反射，所以target需要有无参构造（所以不要使用lombok的@buildr）
      * @param targetClass 目标对象
      * @param source      源对象
      * @return 转换后的目标对象
      */
     public static <T> T convert(Class<T> targetClass, Object source) {
         return getModelMapper().map(source, targetClass);
+    }
+
+    /**
+     * 忽略source中为null的字段
+     * @param targetObj
+     * @param sourceObj
+     * @return
+     */
+    public static Object convert(Object targetObj, Object sourceObj) {
+        if (null == targetObj || null == sourceObj) {
+            return targetObj;
+        }
+        BeanUtils.copyProperties(sourceObj, targetObj, getNullPropertyNames(sourceObj));
+        return targetObj;
+    }
+
+
+    public static String[] getNullPropertyNames (Object source) {
+        final BeanWrapper beanWrapper = new BeanWrapperImpl(source);
+        PropertyDescriptor[] pds = beanWrapper.getPropertyDescriptors();
+        Set<String> emptyNames = new HashSet<>();
+        for (PropertyDescriptor pd : pds) {
+            Object srcValue = beanWrapper.getPropertyValue(pd.getName());
+            if (srcValue == null) {
+                emptyNames.add(pd.getName());
+            }
+        }
+        String[] result = new String[emptyNames.size()];
+        return emptyNames.toArray(result);
     }
 }

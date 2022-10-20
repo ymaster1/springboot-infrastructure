@@ -1,7 +1,7 @@
-package cn.me.ppx.infratructure.sample.repository;
+package cn.me.ppx.infratructure.sample.mybatis.repository;
 
 import cn.me.ppx.infrastructure.mybatis.repository.impl.AbstractBaseLogicRepository;
-import cn.me.ppx.infratructure.sample.entity.SysApp;
+import cn.me.ppx.infratructure.sample.mybatis.entity.SysApp;
 import org.springframework.stereotype.Repository;
 
 /**

@@ -1,8 +1,8 @@
-package cn.me.ppx.infratructure.sample.service;
+package cn.me.ppx.infratructure.sample.mybatis.service;
 
-import cn.me.ppx.infratructure.sample.entity.SysApp;
-import cn.me.ppx.infratructure.sample.entity.Test;
-import cn.me.ppx.infratructure.sample.repository.SysAppRepository;
+import cn.me.ppx.infratructure.sample.mybatis.entity.SysApp;
+import cn.me.ppx.infratructure.sample.mybatis.entity.Test;
+import cn.me.ppx.infratructure.sample.mybatis.repository.SysAppRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package cn.me.ppx.infratructure.sample.entity;
+package cn.me.ppx.infratructure.sample.mybatis.entity;
 
 import cn.me.ppx.infrastructure.common.serializer.JsonDateSerialize;
 import com.fasterxml.jackson.annotation.JsonFormat;

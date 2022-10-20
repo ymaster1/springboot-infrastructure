@@ -23,36 +23,6 @@ import java.util.*;
 @Slf4j
 public final class BeanUtil {
     private static final String JAVA_LANG_PACKAGE = "java.lang";
-
-    /**
-     * 复制资源Bean中的属性值到目标Bean中
-     *
-     * @param targetObj 目标Bean
-     * @param sourceObj 资源Bean
-     */
-    public static Object copyProperties(Object targetObj, Object sourceObj) {
-        if (null == targetObj || null == sourceObj) {
-            return targetObj;
-        }
-        BeanUtils.copyProperties(sourceObj, targetObj, getNullPropertyNames(sourceObj));
-        return targetObj;
-    }
-
-
-    public static String[] getNullPropertyNames (Object source) {
-        final BeanWrapper beanWrapper = new BeanWrapperImpl(source);
-        PropertyDescriptor[] pds = beanWrapper.getPropertyDescriptors();
-        Set<String> emptyNames = new HashSet<>();
-        for (PropertyDescriptor pd : pds) {
-            Object srcValue = beanWrapper.getPropertyValue(pd.getName());
-            if (srcValue == null) {
-                emptyNames.add(pd.getName());
-            }
-        }
-        String[] result = new String[emptyNames.size()];
-        return emptyNames.toArray(result);
-    }
-
     /**
      * 获取class本身及所有父类定义的所有属性(不重复)
      *

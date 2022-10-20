@@ -1,16 +1,15 @@
-package cn.me.ppx.infratructure.sample
+package cn.me.ppx.infratructure.sample.mybatis
 
 import cn.me.ppx.infrastructure.common.dto.BaseResponse
 import cn.me.ppx.infrastructure.mybatis.model.PageInfoModel
 import cn.me.ppx.infrastructure.web.framework.web.BaseController
-import cn.me.ppx.infratructure.sample.entity.SysApp
-import cn.me.ppx.infratructure.sample.entity.Test
-import cn.me.ppx.infratructure.sample.service.AppService
+import cn.me.ppx.infratructure.sample.mybatis.entity.SysApp
+import cn.me.ppx.infratructure.sample.mybatis.entity.Test
+import cn.me.ppx.infratructure.sample.mybatis.service.AppService
 import io.swagger.annotations.Api
 import io.swagger.annotations.ApiOperation
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 /**
