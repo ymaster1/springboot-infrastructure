@@ -1,6 +1,7 @@
 package cn.me.ppx.infrastructure.web.config;
 
 import cn.me.ppx.infrastructure.web.config.propeitoes.FilterProperties;
+import cn.me.ppx.infrastructure.web.config.propeitoes.GlobalProperties;
 import cn.me.ppx.infrastructure.web.framework.servlet.RequestContextFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -16,7 +17,7 @@ import java.util.Set;
  * @date 2022/9/30 12:50
  */
 @Configuration
-@EnableConfigurationProperties({FilterProperties.class})
+@EnableConfigurationProperties({FilterProperties.class, GlobalProperties.class})
 public class InfrastructureWebAutoConfig {
     @Autowired
     private FilterProperties filterProperties;

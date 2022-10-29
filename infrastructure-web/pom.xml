@@ -39,6 +39,12 @@
             <groupId>cn.me.ppx</groupId>
             <artifactId>infrastructure-common</artifactId>
         </dependency>
+        <!--自定义配置文件元数据提示-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
     </dependencies>
 
 </project>

@@ -1,13 +1,13 @@
 package cn.me.ppx.infrastructure.web.config.propeitoes;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.boot.context.properties.ConstructorBinding;
 
 /**
  * @author ym
  * @date 2022/10/29 13:48
  */
 @ConfigurationProperties(prefix = "cn.me.ppx")
-@Configuration
+@ConstructorBinding
 public class GlobalProperties {
 }
