@@ -1,2 +1,9 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
   cn.me.ppx.infrastructure.web.config.InfrastructureWebAutoConfig
+
+org.springframework.boot.diagnostics.FailureAnalyzer=\
+  cn.me.ppx.infrastructure.web.ext.failureAnalyzer.IllegalInjectionFailureAnalyzer,\
+  cn.me.ppx.infrastructure.web.ext.failureAnalyzer.NullPointerFailureAnalyzer
+
+org.springframework.boot.env.EnvironmentPostProcessor=\
+ cn.me.ppx.infrastructure.web.ext.environmentPostProcessor.WebEnvironmentPostProcessor

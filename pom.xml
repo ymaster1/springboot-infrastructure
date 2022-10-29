@@ -53,6 +53,7 @@
         <hutool.version>5.8.8</hutool.version>
         <easy.excel.version>2.1.6</easy.excel.version>
         <hibernate.validator.version>6.2.3.Final</hibernate.validator.version>
+        <jctool.version>4.0.1</jctool.version>
 
         <fastjson.version>1.2.73</fastjson.version>
         <xxl-job.version>2.3.1</xxl-job.version>
@@ -279,6 +280,11 @@
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
                 <version>${guava.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jctools</groupId>
+                <artifactId>jctools-core</artifactId>
+                <version>${jctool.version}</version>
             </dependency>
             <dependency>
                 <groupId>cn.hutool</groupId>
