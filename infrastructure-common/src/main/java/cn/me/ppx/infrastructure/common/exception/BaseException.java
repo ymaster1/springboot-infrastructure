@@ -30,10 +30,10 @@ public  class BaseException extends Exception {
 
     }
 
-    public BaseException(ErrorCode errorCode, Object... args) {
-        if (errorCode != null) {
-            this.code = errorCode.getErrCode();
-            this.message = String.format(errorCode.getMessage(), args);
+    public BaseException(ResultCode resultCode, Object... args) {
+        if (resultCode != null) {
+            this.code = resultCode.getResultCode();
+            this.message = String.format(resultCode.getMessage(), args);
         }
 
         if (args != null && args.length > 0 && args[args.length - 1] instanceof Throwable) {
@@ -42,19 +42,19 @@ public  class BaseException extends Exception {
 
     }
 
-    public BaseException(ErrorCode errorCode, Throwable cause) {
+    public BaseException(ResultCode resultCode, Throwable cause) {
         super(cause);
-        if (errorCode != null) {
-            this.code = errorCode.getErrCode();
-            this.message = errorCode.getMessage();
+        if (resultCode != null) {
+            this.code = resultCode.getResultCode();
+            this.message = resultCode.getMessage();
         }
 
     }
 
-    public BaseException(ErrorCode errorCode) {
-        if (errorCode != null) {
-            this.code = errorCode.getErrCode();
-            this.message = errorCode.getMessage();
+    public BaseException(ResultCode resultCode) {
+        if (resultCode != null) {
+            this.code = resultCode.getResultCode();
+            this.message = resultCode.getMessage();
         }
 
     }

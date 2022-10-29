@@ -35,10 +35,4 @@ public class OrderIdGenerator {
     public static String generatorUUID() {
         return UUID.randomUUID().toString().toUpperCase().replaceAll("-", "");
     }
-
-    public static void main(String[] args) {
-        System.out.println(generator(1L));
-        System.out.println(Long.MAX_VALUE);
-        System.out.println(generatorLongOrder(20L));
-    }
 }

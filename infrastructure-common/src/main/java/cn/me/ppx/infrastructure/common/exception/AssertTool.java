@@ -15,9 +15,9 @@ public abstract class AssertTool {
         }
     }
 
-    public static void isTrue(boolean expression, ErrorCode ErrorCode)throws BizException {
+    public static void isTrue(boolean expression, ResultCode ResultCode)throws BizException {
         if (!expression) {
-            throw new BizException(ErrorCode);
+            throw new BizException(ResultCode);
         }
     }
 
@@ -28,9 +28,9 @@ public abstract class AssertTool {
         }
     }
 
-    public static void isFalse(boolean expression, ErrorCode ErrorCode)throws BizException {
+    public static void isFalse(boolean expression, ResultCode ResultCode)throws BizException {
         if (expression) {
-            throw new BizException(ErrorCode);
+            throw new BizException(ResultCode);
         }
     }
 
@@ -40,14 +40,14 @@ public abstract class AssertTool {
         }
     }
 
-    public static void notNull(Object object, ErrorCode err)throws BizException {
+    public static void notNull(Object object, ResultCode err)throws BizException {
         if (object == null) {
             throw new BizException(err);
         }
     }
 
 
-    public static void assertNull(Object obj, ErrorCode err) throws BizException{
+    public static void assertNull(Object obj, ResultCode err) throws BizException{
         if (null != obj) {
             throw new BizException(err);
         }
@@ -65,7 +65,7 @@ public abstract class AssertTool {
         }
     }
 
-    public static void assertNotBlank(String str, ErrorCode err)throws BizException {
+    public static void assertNotBlank(String str, ResultCode err)throws BizException {
         if (StringUtils.isBlank(str)) {
             throw new BizException(err);
         }
@@ -77,7 +77,7 @@ public abstract class AssertTool {
         }
     }
 
-    public static void notEmpty(Collection<?> collection, ErrorCode err)throws BizException {
+    public static void notEmpty(Collection<?> collection, ResultCode err)throws BizException {
         if (collection == null || collection.isEmpty()) {
             throw new BizException(err);
         }
@@ -90,7 +90,7 @@ public abstract class AssertTool {
         }
     }
 
-    public static void notEmpty(Map<?, ?> map, ErrorCode err)throws BizException {
+    public static void notEmpty(Map<?, ?> map, ResultCode err)throws BizException {
         if (map == null || map.isEmpty()) {
             throw new BizException(err);
         }

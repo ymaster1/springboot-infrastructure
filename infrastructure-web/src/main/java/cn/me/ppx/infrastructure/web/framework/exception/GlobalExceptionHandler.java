@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 /**
  * @author ym
  * @date 2022/9/30 10:48
+ * 全局异常拦截
  */
 @RestControllerAdvice
 public class GlobalExceptionHandler {
@@ -21,7 +22,7 @@ public class GlobalExceptionHandler {
      * 业务异常
      */
     @ExceptionHandler(BizException.class)
-    public BaseResponse handleBizException(BizException e) {
+    public BaseResponse<Object> handleBizException(BizException e) {
         log.error(e.getMessage(), e);
         return BaseResponse.fail(e);
     }
@@ -31,7 +32,7 @@ public class GlobalExceptionHandler {
      * 系统异常
      */
     @ExceptionHandler(SysException.class)
-    public BaseResponse handleSysException(SysException e) {
+    public BaseResponse<Object> handleSysException(SysException e) {
         log.error(e.getMessage(), e);
         return BaseResponse.fail(e);
     }
@@ -43,7 +44,7 @@ public class GlobalExceptionHandler {
      * @return
      */
     @ExceptionHandler(Exception.class)
-    public BaseResponse handleException(Exception e) {
+    public BaseResponse<Object> handleException(Exception e) {
         log.error(e.getMessage(), e);
         return BaseResponse.fail(new SysException(SysCodeEnum.SYSTEM_ERROR));
     }

@@ -1,8 +1,6 @@
 package cn.me.ppx.infrastructure.web.framework.web;
 
-import cn.me.ppx.infrastructure.common.dto.BasePageRequest;
 import cn.me.ppx.infrastructure.common.dto.BaseResponse;
-import com.github.pagehelper.PageHelper;
 
 /**
  * @author ym
@@ -25,15 +23,6 @@ public class BaseController {
      */
     protected <T> BaseResponse<T> ok() {
         return BaseResponse.success();
-    }
-
-    /**
-     * mybatis分页
-     * 单页最大不超过100条
-     * 默认20条
-     */
-    protected void startPage(BasePageRequest request){
-        PageHelper.startPage(request.getPage() == null || request.getPage() <= 0 ? 1 : request.getPage(), request.getCount() == null || request.getCount() <= 0 || request.getCount() > 100 ? 20 : request.getCount());
     }
 
 }

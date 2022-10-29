@@ -6,12 +6,12 @@ public class SysException extends BaseException {
 
     private static final long serialVersionUID = 1L;
 
-    private static final int DEFAULT_ERR_CODE = SysCodeEnum.SYSTEM_ERROR.getErrCode();
+    private static final int DEFAULT_ERR_CODE = SysCodeEnum.SYSTEM_ERROR.getResultCode();
 
     public SysException(String errMessage) {
         super(DEFAULT_ERR_CODE, errMessage);
     }
-    public SysException(ErrorCode codeEnum){
+    public SysException(ResultCode codeEnum){
         super(codeEnum);
     }
 
@@ -27,8 +27,8 @@ public class SysException extends BaseException {
         super(errorCode, errMessage, e);
     }
 
-    public SysException(ErrorCode errorMsg, Throwable e) {
-        super(errorMsg.getErrCode(), errorMsg.getMessage(), e);
+    public SysException(ResultCode errorMsg, Throwable e) {
+        super(errorMsg.getResultCode(), errorMsg.getMessage(), e);
     }
 
 }

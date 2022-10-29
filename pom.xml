@@ -17,6 +17,11 @@
         <module>infrastructure-redis</module>
         <module>infrastructure-kafka</module>
         <module>infrastructure-rbac</module>
+        <module>infrastructure-gateway</module>
+        <module>infrastructure-websocket</module>
+        <module>infrastructure-job</module>
+        <module>infrastructure-rocketmq</module>
+        <module>infrastructure-elasticsearch</module>
     </modules>
     <properties>
         <java.version>1.8</java.version>
@@ -46,6 +51,8 @@
         <okhttp.version>4.9.3</okhttp.version>
         <modelmapper.version>2.3.8</modelmapper.version>
         <hutool.version>5.8.8</hutool.version>
+        <easy.excel.version>2.1.6</easy.excel.version>
+        <hibernate.validator.version>6.2.3.Final</hibernate.validator.version>
 
         <fastjson.version>1.2.73</fastjson.version>
         <xxl-job.version>2.3.1</xxl-job.version>
@@ -60,6 +67,11 @@
         <redis.version>1.0.0</redis.version>
         <kafka.version>1.0.0</kafka.version>
         <rbac.version>1.0.0</rbac.version>
+        <gateway.version>1.0.0</gateway.version>
+        <job.version>1.0.0</job.version>
+        <rocketmq.version>1.0.0</rocketmq.version>
+        <websocket.version>1.0.0</websocket.version>
+        <es.version>1.0.0</es.version>
     </properties>
     <dependencies>
         <!--        kotlin-->
@@ -109,6 +121,32 @@
                 <artifactId>infrastructure-rbac</artifactId>
                 <version>${rbac.version}</version>
             </dependency>
+            <dependency>
+                <groupId>cn.me.ppx</groupId>
+                <artifactId>infrastructure-gateway</artifactId>
+                <version>${gateway.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.me.ppx</groupId>
+                <artifactId>infrastructure-job</artifactId>
+                <version>${job.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.me.ppx</groupId>
+                <artifactId>infrastructure-rocketmq</artifactId>
+                <version>${rocketmq.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.me.ppx</groupId>
+                <artifactId>infrastructure-websocket</artifactId>
+                <version>${websocket.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.me.ppx</groupId>
+                <artifactId>infrastructure-elasticsearch</artifactId>
+                <version>${es.version}</version>
+            </dependency>
+
             <!--            kotlin-->
             <dependency>
                 <groupId>com.fasterxml.jackson.module</groupId>
@@ -225,6 +263,11 @@
                 <artifactId>logging-interceptor</artifactId>
                 <version>${okhttp.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-validator</artifactId>
+                <version>${hibernate.validator.version}</version>
+            </dependency>
 
             <dependency>
                 <groupId>org.redisson</groupId>
@@ -241,6 +284,11 @@
                 <groupId>cn.hutool</groupId>
                 <artifactId>hutool-all</artifactId>
                 <version>${hutool.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>easyexcel</artifactId>
+                <version>${easy.excel.version}</version>
             </dependency>
 
             <!-- mybatis-->
@@ -284,17 +332,34 @@
             </plugins>
         </pluginManagement>
         <plugins>
-            <!--            kotlin build -->
             <plugin>
                 <groupId>org.jetbrains.kotlin</groupId>
                 <artifactId>kotlin-maven-plugin</artifactId>
+                <version>${kotlin.version}</version>
                 <executions>
                     <execution>
                         <id>compile</id>
-                        <phase>compile</phase>
                         <goals>
                             <goal>compile</goal>
                         </goals>
+                        <configuration>
+                            <sourceDirs>
+                                <sourceDir>${project.basedir}/src/main/kotlin</sourceDir>
+                                <sourceDir>${project.basedir}/src/main/java</sourceDir>
+                            </sourceDirs>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>test-compile</id>
+                        <goals>
+                            <goal>test-compile</goal>
+                        </goals>
+                        <configuration>
+                            <sourceDirs>
+                                <sourceDir>${project.basedir}/src/test/kotlin</sourceDir>
+                                <sourceDir>${project.basedir}/src/test/java</sourceDir>
+                            </sourceDirs>
+                        </configuration>
                     </execution>
                 </executions>
                 <configuration>
@@ -309,11 +374,41 @@
                     <dependency>
                         <groupId>org.jetbrains.kotlin</groupId>
                         <artifactId>kotlin-maven-allopen</artifactId>
-                        <version>${kotlin.version}</version>
+                        <version>1.6.21</version>
                     </dependency>
                 </dependencies>
             </plugin>
-
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.5.1</version>
+                <executions>
+                    <!-- 替换会被 maven 特别处理的 default-compile -->
+                    <execution>
+                        <id>default-compile</id>
+                        <phase>none</phase>
+                    </execution>
+                    <!-- 替换会被 maven 特别处理的 default-testCompile -->
+                    <execution>
+                        <id>default-testCompile</id>
+                        <phase>none</phase>
+                    </execution>
+                    <execution>
+                        <id>java-compile</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>java-test-compile</id>
+                        <phase>test-compile</phase>
+                        <goals>
+                            <goal>testCompile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 </project>

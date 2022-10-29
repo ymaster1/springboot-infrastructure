@@ -15,34 +15,33 @@ import lombok.extern.slf4j.Slf4j;
 public class DefaultResponseHandler implements ResponseHandlerI {
 
     @Override
-    public  Object handle(Class returnType, int errCode, String errMsg){
-        if (isColaResponse(returnType)){
+    public Object handle(Class returnType, int errCode, String errMsg) {
+        if (isColaResponse(returnType)) {
             return handleColaResponse(returnType, errCode, errMsg);
         }
         return null;
     }
 
-    public  Object handle(Class returnType, BaseException e){
+    public Object handle(Class returnType, BaseException e) {
         return handle(returnType, e.getCode(), e.getMessage());
     }
 
 
     private static Object handleColaResponse(Class returnType, int errCode, String errMsg) {
         try {
-            BaseResponse response = (BaseResponse)returnType.newInstance();
-            response.setSuccess(false);
-            response.setErrCode(errCode);
-            response.setErrMessage(errMsg);
+            BaseResponse response = (BaseResponse) returnType.newInstance();
+            response.setRequestId("false");
+            response.setCode(errCode);
+            response.setMsg(errMsg);
             return response;
-        }
-        catch (Exception ex){
+        } catch (Exception ex) {
 
-            return  null;
+            return null;
         }
     }
 
     private static boolean isColaResponse(Class returnType) {
-        return  returnType == BaseResponse.class || returnType.getGenericSuperclass() == BaseResponse.class;
+        return returnType == BaseResponse.class || returnType.getGenericSuperclass() == BaseResponse.class;
     }
 }
 

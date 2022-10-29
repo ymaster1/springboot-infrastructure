@@ -3,8 +3,11 @@ package cn.me.ppx.infrastructure.common.dto;
 
 
 import cn.me.ppx.infrastructure.common.exception.BaseException;
+import cn.me.ppx.infrastructure.common.utils.MDCUtils;
 
 import java.io.Serializable;
+
+import static cn.me.ppx.infrastructure.common.exception.SysCodeEnum.SYSTEM_SUCCESS;
 
 /**
  * Response to caller
@@ -15,11 +18,11 @@ public class BaseResponse<T> implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private boolean success;
+    private String requestId;
 
-    private int errCode;
+    private int code;
 
-    private String errMessage;
+    private String msg;
     private T data;
 
     public T getData() {
@@ -30,60 +33,64 @@ public class BaseResponse<T> implements Serializable {
         this.data = data;
     }
 
-    public boolean isSuccess() {
-        return success;
+    public String getRequestId() {
+        return requestId;
     }
 
-    public void setSuccess(boolean success) {
-        this.success = success;
+    public void setRequestId(String requestId) {
+        this.requestId = requestId;
     }
 
-    public int getErrCode() {
-        return errCode;
+    public int getCode() {
+        return code;
     }
 
-    public void setErrCode(int errCode) {
-        this.errCode = errCode;
+    public void setCode(int code) {
+        this.code = code;
     }
 
-    public String getErrMessage() {
-        return errMessage;
+    public String getMsg() {
+        return msg;
     }
 
-    public void setErrMessage(String errMessage) {
-        this.errMessage = errMessage;
+    public void setMsg(String msg) {
+        this.msg = msg;
     }
 
     @Override
     public String toString() {
-        return "Response [success=" + success + ", errCode=" + errCode + ", errMessage=" + errMessage + "]";
+        return "Response [success=" + requestId + ", code=" + code + ", msg=" + msg + "]";
     }
 
     public static <T> BaseResponse<T> success() {
         BaseResponse<T> response = new BaseResponse<>();
-        response.setSuccess(true);
+        response.setRequestId(MDCUtils.getMsgId());
+        response.setMsg(SYSTEM_SUCCESS.getMessage());
+        response.setCode(SYSTEM_SUCCESS.getResultCode());
         return response;
     }
 
     public static <T> BaseResponse<T> fail(BaseException e) {
         BaseResponse<T> response = new BaseResponse<>();
-        response.setSuccess(false);
-        response.setErrCode(e.getCode());
-        response.setErrMessage(e.getMessage());
+        response.setRequestId(MDCUtils.getMsgId());
+        response.setCode(e.getCode());
+        response.setMsg(e.getMessage());
         return response;
     }
 
     public static <T> BaseResponse<T> fail(int errCode, String errMessage) {
         BaseResponse<T> response = new BaseResponse<>();
-        response.setSuccess(false);
-        response.setErrCode(errCode);
-        response.setErrMessage(errMessage);
+        response.setRequestId(MDCUtils.getMsgId());
+        response.setCode(errCode);
+        response.setMsg(errMessage);
         return response;
     }
 
     public static <T> BaseResponse<T> build(T data) {
         BaseResponse<T> response = new BaseResponse<>();
-        response.setSuccess(true);
+        response.setRequestId(MDCUtils.getMsgId());
+        response.setMsg(SYSTEM_SUCCESS.getMessage());
+        response.setCode(SYSTEM_SUCCESS.getResultCode());
         response.setData(data);
         return response;
     }

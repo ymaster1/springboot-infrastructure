@@ -4,10 +4,11 @@ package cn.me.ppx.infrastructure.common.exception;
 /**
  * @author ym
  * @date 2022/9/30 11:05
- * 系统组件预先定义的错误类型
+ * 系统组件预先定义的相应类型
  */
-public enum SysCodeEnum implements ErrorCode {
-    SYSTEM_ERROR(1, "系统异常");
+public enum SysCodeEnum implements ResultCode {
+    SYSTEM_ERROR(500, "系统异常"),
+    SYSTEM_SUCCESS(200, "成功");
     private final int code;
     private final String msg;
 
@@ -17,7 +18,7 @@ public enum SysCodeEnum implements ErrorCode {
     }
 
     @Override
-    public int getErrCode() {
+    public int getResultCode() {
         return code;
     }
 
