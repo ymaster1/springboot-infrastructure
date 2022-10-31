@@ -22,4 +22,4 @@
 ////////////////////////////////////////////////////////////////////
 Application Version: ${application.version}${application.formatted-version}
 Spring Boot Version: ${spring-boot.version}${spring-boot.formatted-version}
-Spring Cloud Alibaba Version: ${java.version}
+Java Version: ${java.version}
