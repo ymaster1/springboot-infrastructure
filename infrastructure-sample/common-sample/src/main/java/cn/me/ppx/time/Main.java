@@ -3,6 +3,7 @@ package cn.me.ppx.time;
 import cn.hutool.core.date.DateTime;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.date.LocalDateTimeUtil;
+import cn.me.ppx.infrastructure.common.time.java.DevTime;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -15,6 +16,9 @@ import java.util.Date;
  */
 public class Main {
     public static void main(String[] args) {
+        DevTime now = DevTime.now();
+        now.minusTime(1, ChronoUnit.DAYS);
+
         Date date = new Date();
         DateTime dateTime = DateUtil.date(date);
         LocalDateTime localDateTime = dateTime.toLocalDateTime();

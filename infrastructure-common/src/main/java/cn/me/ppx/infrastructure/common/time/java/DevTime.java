@@ -4,6 +4,7 @@ import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.TemporalAdjusters;
+import java.util.Date;
 
 /**
  * @author ym
@@ -133,5 +134,9 @@ public class DevTime {
         }
         return 0;
 
+    }
+
+    public Date date(){
+        return new Date(milliSeconds());
     }
 }
