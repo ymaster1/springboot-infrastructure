@@ -1,7 +1,8 @@
-package cn.me.ppx.infrastructure.common.utils;
+package cn.me.ppx.infrastructure.common.utils.sign;
 
 import cn.me.ppx.infrastructure.common.constants.BaseConstants;
 import cn.me.ppx.infrastructure.common.exception.SysException;
+import cn.me.ppx.infrastructure.common.utils.MapUtils;
 import lombok.extern.slf4j.Slf4j;
 
 import java.nio.charset.Charset;
@@ -10,11 +11,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.TreeMap;
 
 
-/**
- * @author panda
- * @version 1.0
- * @date 19/7/7 下午2:15
- */
+
 @Slf4j
 public class SignUtils {
     private static final String SIGN_SHA1 = "SHA1";

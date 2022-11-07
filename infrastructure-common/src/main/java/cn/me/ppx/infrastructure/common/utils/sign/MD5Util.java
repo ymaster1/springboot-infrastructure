@@ -1,4 +1,4 @@
-package cn.me.ppx.infrastructure.common.utils;
+package cn.me.ppx.infrastructure.common.utils.sign;
 
 import java.security.MessageDigest;
 
