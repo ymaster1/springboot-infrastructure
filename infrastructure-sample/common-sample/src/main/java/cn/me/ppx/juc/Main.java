@@ -38,7 +38,6 @@ public class Main {
             for (int i = 0; i < 10; i++) {
                 a.add(i);
 
-//                list.add(CompletableFuture.runAsync(() -> g(index, a)));
                 list.add(CompletableFuture.runAsync(() ->{
                     synchronized (a){
                         Integer integer = a.get(index.get());
@@ -53,12 +52,6 @@ public class Main {
         executor.shutdown();
 
         System.out.println(submit.get());
-    }
-
-    private synchronized void g(AtomicInteger atomicInteger, List<Integer> a) {
-        Integer integer = a.get(atomicInteger.get());
-        atomicInteger.getAndIncrement();
-        System.out.println(integer + Thread.currentThread().getName());
     }
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {

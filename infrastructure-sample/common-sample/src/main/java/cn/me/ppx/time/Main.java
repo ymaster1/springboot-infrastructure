@@ -5,8 +5,8 @@ import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.date.LocalDateTimeUtil;
 import cn.me.ppx.infrastructure.common.time.java.DevTime;
 
-import java.time.LocalDateTime;
-import java.time.ZoneId;
+import java.time.*;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
@@ -31,5 +31,6 @@ public class Main {
         Date yesterday = Date.from(time.atZone(ZoneId.systemDefault()).toInstant());
         System.out.println(yesterday);
         System.out.println(DateUtil.yesterday());
+        System.out.println(ZonedDateTime.ofInstant(Instant.ofEpochMilli(System.currentTimeMillis()), ZoneOffset.ofHours(8).normalized()).format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss")));
     }
 }

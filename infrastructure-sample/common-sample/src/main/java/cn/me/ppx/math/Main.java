@@ -1,8 +1,9 @@
-package cn.me.ppx;
+package cn.me.ppx.math;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -11,7 +12,13 @@ import java.util.List;
  */
 public class Main {
     public static void main(String[] args) {
-        System.out.println(is_int(BigDecimal.valueOf(13.10)));
+//        System.out.println(is_int(BigDecimal.valueOf(13.10)));
+//        System.out.println(up(BigDecimal.valueOf(45.00)));
+//        System.out.println(up(BigDecimal.valueOf(45)));
+//        System.out.println(BigDecimal.valueOf(100.0).remainder(BigDecimal.TEN));
+//        System.out.println(BigDecimal.valueOf(100).remainder(BigDecimal.TEN));
+//        System.out.println(Arrays.toString(BigDecimal.valueOf(100.00).divideAndRemainder(BigDecimal.TEN)));
+        System.out.println(BigDecimal.valueOf(100).compareTo(BigDecimal.valueOf(10)));
     }
 
     /**
@@ -41,7 +48,7 @@ public class Main {
      * @return
      */
     public static BigDecimal up(BigDecimal v) {
-        if (v.remainder(BigDecimal.TEN).equals(BigDecimal.ZERO)) {
+        if (v.remainder(BigDecimal.TEN).equals(BigDecimal.ZERO)||v.remainder(BigDecimal.TEN).equals(BigDecimal.valueOf(0.0))) {
             return v;
         } else {
             if (v.compareTo(BigDecimal.TEN) < 0) {
