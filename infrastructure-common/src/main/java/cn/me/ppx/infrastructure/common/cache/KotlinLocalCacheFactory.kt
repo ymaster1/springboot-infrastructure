@@ -1,5 +1,6 @@
 package cn.me.ppx.infrastructure.common.cache
 
+import cn.me.ppx.infrastructure.common.cache.caffine.CaffeineLoadingLocalCache
 import cn.me.ppx.infrastructure.common.cache.caffine.CaffeineLocalCache
 
 /**
@@ -8,12 +9,15 @@ import cn.me.ppx.infrastructure.common.cache.caffine.CaffeineLocalCache
  *
  */
 class KotlinLocalCacheFactory {
-    inline fun <reified T> defaultLocalCache(): LocalCache<T> {
-        return CaffeineLocalCache()
-    }
+    private fun KotlinLocalCacheFactory() {}
 
-    fun test(){
-        // 这里直接就知道泛型时String
-        val cache = defaultLocalCache<String>()
+    companion object {
+        inline fun <reified T> defaultLocalCache(): LocalCache<T> {
+            return CaffeineLocalCache()
+        }
+
+        inline fun <reified T> loadingLocalCache(crossinline loader: (String) -> T): LocalCache<T> {
+            return CaffeineLoadingLocalCache { loader.invoke(it) }
+        }
     }
 }

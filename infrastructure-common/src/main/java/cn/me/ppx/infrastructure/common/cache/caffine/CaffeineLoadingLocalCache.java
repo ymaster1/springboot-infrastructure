@@ -15,27 +15,10 @@ import java.util.concurrent.TimeUnit;
  * @date 2022/11/11 15:38
  */
 public class CaffeineLoadingLocalCache<T> implements LocalCache<T> {
-    private final LoadingCache<String, String> cache;
+    private final LoadingCache<String, T> cache;
 
-    public CaffeineLoadingLocalCache() {
-        cache = Caffeine.newBuilder().expireAfterWrite(1, TimeUnit.MINUTES).maximumSize(100).build(new CacheLoader<String, String>() {
-            /**
-             * 当缓存不存在/缓存已过期时，若调用get()方法，则会自动调用CacheLoader.load()方法加载最新值
-             * 当两个线程同时调用get()，则后一线程将被阻塞，直至前一线程更新缓存完成。
-             * @param key the non-null key whose value should be loaded
-             * @return
-             * @throws Exception
-             */
-            @Override
-            public @Nullable String load(@NonNull String key) throws Exception {
-                return null;
-            }
-
-            @Override
-            public @NonNull Map<@NonNull String, @NonNull String> loadAll(@NonNull Iterable<? extends @NonNull String> keys) throws Exception {
-                return CacheLoader.super.loadAll(keys);
-            }
-        });
+    public CaffeineLoadingLocalCache(CacheLoader<String, T> cacheLoader) {
+        cache = Caffeine.newBuilder().expireAfterWrite(1, TimeUnit.MINUTES).maximumSize(100).build(cacheLoader);
     }
 
     @Override
