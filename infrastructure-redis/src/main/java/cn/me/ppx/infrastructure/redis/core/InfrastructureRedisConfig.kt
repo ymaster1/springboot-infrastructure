@@ -14,7 +14,7 @@ import javax.validation.constraints.NotNull
 @Validated
 @ConstructorBinding
 data class InfrastructureRedisConfig(
-    @field: NotNull
-    var enableLocal: Boolean = true,
+    @field: NotNull(message = "不能为空")
+    var enableLocal: Boolean ,
 
 )

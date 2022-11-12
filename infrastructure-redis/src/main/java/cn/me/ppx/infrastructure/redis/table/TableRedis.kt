@@ -18,10 +18,23 @@ interface TableRedis {
      * SETNX
      */
     fun setIfAbsent(table: String, key: String, value: String): Boolean
-    fun setIfAbsent(table: String, key: String, value: String, expire: Long)
-    fun setIfPresent(table: String, key: String, value: String)
 
-    fun setIfPresent(table: String, key: String, value: String, expire: Long)
+    /**
+     * SET NX
+     */
+    fun setIfAbsent(table: String, key: String, value: String, expire: Long):Boolean
+    fun setIfPresent(table: String, key: String, value: String):Boolean
 
-    fun get(table: String, key: String): String
+    /**
+     * SET EX
+     */
+    fun setIfPresent(table: String, key: String, value: String, expire: Long):Boolean
+
+    /**
+     * @return 不存在时返回 null
+     *
+     */
+    fun get(table: String, key: String): String?
+
+    fun getSequenceNo(key: String, value: String):Long
 }
