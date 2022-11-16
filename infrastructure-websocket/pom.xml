@@ -10,5 +10,14 @@
     <modelVersion>4.0.0</modelVersion>
     <version>${websocket.version}</version>
     <artifactId>infrastructure-websocket</artifactId>
-
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-websocket</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.me.ppx</groupId>
+            <artifactId>infrastructure-common</artifactId>
+        </dependency>
+    </dependencies>
 </project>

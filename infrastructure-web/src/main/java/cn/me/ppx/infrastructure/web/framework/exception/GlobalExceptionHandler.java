@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
  * @author ym
  * @date 2022/9/30 10:48
  * 全局异常拦截
+ *
+ * 也可以使用HandlerExceptionResolver实现
  */
 @RestControllerAdvice
 public class GlobalExceptionHandler {

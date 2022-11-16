@@ -19,11 +19,9 @@ import java.util.Set;
 @Configuration
 @EnableConfigurationProperties({FilterProperties.class, GlobalProperties.class})
 public class InfrastructureWebAutoConfig {
-    @Autowired
-    private FilterProperties filterProperties;
 
     @Bean
-    public FilterRegistrationBean<RequestContextFilter> requestFilter() {
+    public FilterRegistrationBean<RequestContextFilter> requestFilter(FilterProperties filterProperties) {
         RequestContextFilter filter = new RequestContextFilter();
         Set<String> set = new HashSet<>();
         set.add("*.icon");
