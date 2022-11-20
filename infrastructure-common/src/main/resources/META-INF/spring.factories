@@ -1,0 +1,2 @@
+cn.me.ppx.infrastructure.common.eventbus.EventBus=\
+  cn.me.ppx.infrastructure.common.eventbus.disruptor.DisruptorEventBus

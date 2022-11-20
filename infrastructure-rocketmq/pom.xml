@@ -22,5 +22,26 @@
         <groupId>cn.me.ppx</groupId>
         <artifactId>infrastructure-common</artifactId>
     </dependency>
+<!--    <dependency>-->
+<!--        <groupId>org.apache.rocketmq</groupId>-->
+<!--        <artifactId>rocketmq-spring-boot-starter</artifactId>-->
+<!--        <version>2.2.2</version>-->
+<!--    </dependency>-->
+<!--    <dependency>-->
+<!--        <groupId>org.apache.rocketmq</groupId>-->
+<!--        <artifactId>rocketmq-namesrv</artifactId>-->
+<!--        <version>4.9.4</version>-->
+<!--    </dependency>-->
+<!--    <dependency>-->
+<!--        <groupId>org.apache.rocketmq</groupId>-->
+<!--        <artifactId>rocketmq-broker</artifactId>-->
+<!--        <version>4.9.4</version>-->
+<!--    </dependency>-->
+    <dependency>
+        <groupId>org.apache.rocketmq</groupId>
+        <artifactId>rocketmq-client</artifactId>
+        <version>4.9.4</version>
+    </dependency>
+
 </dependencies>
 </project>
