@@ -49,16 +49,26 @@ public class DisruptorQueueFactory {
         return new DisruptorQueue<>(_disruptor);
     }
 
+    /**
+     * DCl 确保获取的是一个单例的String Queue
+     *
+     * @param isMoreProducer
+     * @param consumers
+     * @return
+     */
     @SafeVarargs
-    public static DisruptorQueue<String> getStringHandleEventsQueue(boolean isMoreProducer,
-                                                                    DisruptorHandler<String>... consumers) {
+    public static DisruptorQueue<String> getStringHandleEventsQueue(boolean isMoreProducer, DisruptorHandler<String>... consumers) {
         if (stringQueue == null) {
-            Disruptor<Event<String>> _disruptor = new Disruptor<>(Event::new,
-                    1024 * 1024, Executors.defaultThreadFactory(),
-                    isMoreProducer ? ProducerType.MULTI : ProducerType.SINGLE,
-                    new SleepingWaitStrategy());
-            _disruptor.handleEventsWith(consumers);
-            stringQueue = new DisruptorQueue<>(_disruptor);
+            synchronized (DisruptorQueueFactory.class) {
+                if (stringQueue == null) {
+                    Disruptor<Event<String>> _disruptor = new Disruptor<>(Event::new,
+                            1024 * 1024, Executors.defaultThreadFactory(),
+                            isMoreProducer ? ProducerType.MULTI : ProducerType.SINGLE,
+                            new SleepingWaitStrategy());
+                    _disruptor.handleEventsWith(consumers);
+                    stringQueue = new DisruptorQueue<>(_disruptor);
+                }
+            }
         }
         return stringQueue;
     }

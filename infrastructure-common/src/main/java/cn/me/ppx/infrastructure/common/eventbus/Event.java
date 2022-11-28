@@ -11,6 +11,7 @@ import java.util.Properties;
 @Data
 public class Event<T> {
     private Properties properties;
+    private String topic;
 
     private T data;
 }

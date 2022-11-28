@@ -1,6 +1,8 @@
 package cn.me.ppx.infrastructure.common.eventbus.disruptor;
 
 import cn.me.ppx.infrastructure.common.eventbus.Event;
+import cn.me.ppx.infrastructure.common.exception.SysCodeEnum;
+import cn.me.ppx.infrastructure.common.exception.SysException;
 import com.lmax.disruptor.EventTranslatorOneArg;
 import com.lmax.disruptor.RingBuffer;
 import com.lmax.disruptor.dsl.Disruptor;
@@ -26,7 +28,10 @@ public class DisruptorQueue<T> {
         this.disruptor.start();
     }
 
-    public void add(T t) {
+    public void add(String topic, T t) throws SysException {
+        if (topic == null) {
+            throw new SysException(SysCodeEnum.TOPIC_MISS);
+        }
         if (t != null) {
             // 请求下一个事件序号
             long sequence = this.ringBuffer.next();
@@ -35,6 +40,7 @@ public class DisruptorQueue<T> {
                 Event<T> event = this.ringBuffer.get(sequence);
                 // 给事件设置内容
                 event.setData(t);
+                event.setTopic(topic);
             } finally {
                 // 发布事件，必须再finally中调用，如果未调用会阻塞后续的发布
                 this.ringBuffer.publish(sequence);
