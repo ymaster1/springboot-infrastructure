@@ -1,6 +1,6 @@
 package cn.me.ppx.infrastructure.redis.cache
 
-import cn.me.ppx.infrastructure.common.cache.LocalCache
+import cn.me.ppx.infrastructure.common.cache.caffine.CaffeineLocalCache
 import cn.me.ppx.infrastructure.redis.core.InfrastructureRedisConfig
 import cn.me.ppx.infrastructure.redis.table.TableRedis
 
@@ -10,7 +10,7 @@ import cn.me.ppx.infrastructure.redis.table.TableRedis
  * @param config 缓存配置
  */
 class CacheRedisImpl(
-    private val localCache: LocalCache<String>,
+    private val localCache: CaffeineLocalCache<String>,
     private val tableRedis: TableRedis,
     private val config: InfrastructureRedisConfig
 ) : CacheRedis {

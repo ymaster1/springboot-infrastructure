@@ -23,7 +23,7 @@ public class CaffeineLocalCache<T> implements LocalCache<T> {
 
     @Override
     public T get(@NotNull String key) {
-        return null;
+        return cache.getIfPresent(key);
     }
 
     @Override

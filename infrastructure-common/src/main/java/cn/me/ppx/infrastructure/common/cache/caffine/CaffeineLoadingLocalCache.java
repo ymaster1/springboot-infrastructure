@@ -33,7 +33,7 @@ public class CaffeineLoadingLocalCache<T> implements LocalCache<T> {
 
     @Override
     public T get(@NonNull String key) {
-        return null;
+        return cache.get(key);
     }
 
     @Override

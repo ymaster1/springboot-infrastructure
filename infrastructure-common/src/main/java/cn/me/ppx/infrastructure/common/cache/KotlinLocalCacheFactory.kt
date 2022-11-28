@@ -12,11 +12,11 @@ class KotlinLocalCacheFactory {
     private fun KotlinLocalCacheFactory() {}
 
     companion object {
-        inline fun <reified T> defaultLocalCache(): LocalCache<T> {
+        inline fun <reified T> defaultLocalCache(): CaffeineLocalCache<T> {
             return CaffeineLocalCache()
         }
 
-        inline fun <reified T> loadingLocalCache(crossinline loader: (String) -> T): LocalCache<T> {
+        inline fun <reified T> loadingLocalCache(crossinline loader: (String) -> T): CaffeineLoadingLocalCache<T> {
             return CaffeineLoadingLocalCache { loader.invoke(it) }
         }
     }

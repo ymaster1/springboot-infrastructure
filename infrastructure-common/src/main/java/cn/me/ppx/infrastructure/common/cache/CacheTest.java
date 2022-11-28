@@ -68,6 +68,7 @@ public class CacheTest {
 
     public static void main(String[] args) {
         LocalCache<String> stringLocalCache = LocalCacheFactory.defaultLocalCache(String.class);
+        LocalCache<String> stringLocalCache1 = LocalCacheFactory.defaultLocalCache();
 
     }
 }
