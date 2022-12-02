@@ -7,7 +7,9 @@ import org.springframework.web.socket.messaging.SessionDisconnectEvent
 import org.springframework.web.socket.messaging.SessionSubscribeEvent
 import org.springframework.web.socket.messaging.SessionUnsubscribeEvent
 
-
+/**
+ * @EventListener 默认都是同步处理事件
+ */
 class SpringStompEventListener(
         private val delegate: ThorEventListener?
 ) {

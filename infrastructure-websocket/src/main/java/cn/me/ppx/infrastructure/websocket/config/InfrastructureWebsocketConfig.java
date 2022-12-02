@@ -12,10 +12,9 @@ import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerCo
  */
 @EnableWebSocket
 @Configuration
-public class InfrastructureWebsocketConfig implements WebSocketConfigurer, WebSocketMessageBrokerConfigurer {
+public class InfrastructureWebsocketConfig implements WebSocketConfigurer{
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-
 
     }
 }

@@ -1,9 +1,9 @@
 package cn.me.ppx.infrastructure.websocket.handler
 
 import cn.me.ppx.infrastructure.websocket.ThorMessage
-import cn.me.ppx.infrastructure.websocket.annotation.ThorRequestMapping
-import cn.me.ppx.infrastructure.websocket.annotation.ThorSubscribeMapping
-import cn.me.ppx.infrastructure.websocket.annotation.ThorUnSubscribeMapping
+import cn.me.ppx.infrastructure.websocket.annotation.StompRequestMapping
+import cn.me.ppx.infrastructure.websocket.annotation.StompSubscribeMapping
+import cn.me.ppx.infrastructure.websocket.annotation.StompUnSubscribeMapping
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.core.MethodParameter
 import org.springframework.messaging.Message
@@ -29,10 +29,10 @@ class ThorMethodReturnValueHandler(
 
 
     override fun supportsReturnType(returnType: MethodParameter): Boolean {
-        return returnType.hasMethodAnnotation(ThorRequestMapping::class.java)
-                || returnType.hasMethodAnnotation(ThorSubscribeMapping::class.java)
+        return returnType.hasMethodAnnotation(StompRequestMapping::class.java)
+                || returnType.hasMethodAnnotation(StompSubscribeMapping::class.java)
                 || returnType.hasMethodAnnotation(MessageExceptionHandler::class.java)
-                || returnType.hasMethodAnnotation(ThorUnSubscribeMapping::class.java)
+                || returnType.hasMethodAnnotation(StompUnSubscribeMapping::class.java)
     }
 
     override fun handleReturnValue(returnValue: Any?, returnType: MethodParameter, message: Message<*>) {
@@ -53,11 +53,11 @@ class ThorMethodReturnValueHandler(
         // 处理路径
         val destinations = arrayOf(SimpMessageHeaderAccessor.getDestination(headers))
 
-        destinations.forEach {
-            this.messagingTemplate.convertAndSendToUser(
-                sessionId, it, payload, createHeaders(sessionId, message)
-            )
-        }
+//        destinations.forEach {
+//            this.messagingTemplate.convertAndSendToUser(
+//                sessionId, it, payload, createHeaders(sessionId, message)
+//            )
+//        }
     }
 
     private fun createHeaders(sessionId: String, message: Message<*>): MessageHeaders {

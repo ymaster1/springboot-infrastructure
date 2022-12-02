@@ -7,6 +7,6 @@ import org.springframework.stereotype.Component
 @Retention(AnnotationRetention.RUNTIME)
 @MustBeDocumented
 @Component
-annotation class ThorStompController(
+annotation class StompController(
         val value: String
 )

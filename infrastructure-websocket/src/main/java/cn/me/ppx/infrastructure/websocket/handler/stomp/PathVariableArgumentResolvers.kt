@@ -1,4 +1,4 @@
-package cn.me.ppx.infrastructure.websocket.handler
+package cn.me.ppx.infrastructure.websocket.handler.stomp
 
 import cn.me.ppx.infrastructure.websocket.annotation.PathVariable
 import org.springframework.core.MethodParameter

@@ -1,6 +1,6 @@
 package cn.me.ppx.infrastructure.websocket.handler
 
-import cn.me.ppx.infrastructure.websocket.annotation.ThorStompController
+import cn.me.ppx.infrastructure.websocket.annotation.StompController
 import org.springframework.context.ApplicationContext
 import org.springframework.core.annotation.AnnotatedElementUtils
 import org.springframework.web.socket.config.annotation.StompEndpointRegistry
@@ -26,10 +26,10 @@ class ThorControllerResolvers(
                 }
 
                 if (beanType != null && AnnotatedElementUtils.hasAnnotation(beanType,
-                        ThorStompController::class.java)
+                        StompController::class.java)
                 ) {
                     val controller =
-                        AnnotatedElementUtils.findMergedAnnotation(beanType, ThorStompController::class.java)!!
+                        AnnotatedElementUtils.findMergedAnnotation(beanType, StompController::class.java)!!
                     registry.addEndpoint(controller.value)
                         .setAllowedOrigins("*")
                         .run {

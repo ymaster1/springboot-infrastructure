@@ -33,9 +33,7 @@ import java.util.concurrent.ThreadPoolExecutor
 class ThorMessageBrokerConfiguration(
     @Autowired(required = false)
     private val customPathInterceptors: List<CustomPathHandshakeInterceptor>?
-) : DelegatingWebSocketMessageBrokerConfiguration(), ApplicationContextAware, CommandLineRunner {
-    @Autowired
-    private lateinit var mappingGson2MessageConverter: MappingGson2MessageConverter
+) : DelegatingWebSocketMessageBrokerConfiguration(), ApplicationContextAware {
 
 
     /**
@@ -46,34 +44,28 @@ class ThorMessageBrokerConfiguration(
         return SpringStompEventListener(thorEventListener)
     }
 
-    @Bean
-    fun gson2MessageConverter(): MappingGson2MessageConverter {
-        return MappingGson2MessageConverter()
-    }
 
-    override fun configureMessageConverters(messageConverters: MutableList<MessageConverter>): Boolean {
-        messageConverters.add(mappingGson2MessageConverter)
-        return true
-    }
 
-    override fun simpleBrokerMessageHandler(
-        clientInboundChannel: AbstractSubscribableChannel,
-        clientOutboundChannel: AbstractSubscribableChannel,
-        brokerChannel: AbstractSubscribableChannel,
-        userDestinationResolver: UserDestinationResolver
-    ): AbstractBrokerMessageHandler? {
-        val handler =
-            ThorMessageBrokerHandler(clientInboundChannel, clientOutboundChannel, brokerChannel, mutableListOf())
-        val scheduler = ThreadPoolTaskScheduler()
-        scheduler.threadNamePrefix = "MessageBroker-"
-        scheduler.poolSize = Runtime.getRuntime().availableProcessors()
-        scheduler.isRemoveOnCancelPolicy = true
-        scheduler.initialize()
-        handler.taskScheduler = scheduler
-        handler.heartbeatValue = longArrayOf(10000L, 10000L)
-        handler.subscriptionRegistry = ThorSubscriptionRegistry()
-        return handler
-    }
+
+
+//    override fun simpleBrokerMessageHandler(
+//        clientInboundChannel: AbstractSubscribableChannel,
+//        clientOutboundChannel: AbstractSubscribableChannel,
+//        brokerChannel: AbstractSubscribableChannel,
+//        userDestinationResolver: UserDestinationResolver
+//    ): AbstractBrokerMessageHandler? {
+//        val handler =
+//            ThorMessageBrokerHandler(clientInboundChannel, clientOutboundChannel, brokerChannel, mutableListOf())
+//        val scheduler = ThreadPoolTaskScheduler()
+//        scheduler.threadNamePrefix = "MessageBroker-"
+//        scheduler.poolSize = Runtime.getRuntime().availableProcessors()
+//        scheduler.isRemoveOnCancelPolicy = true
+//        scheduler.initialize()
+//        handler.taskScheduler = scheduler
+//        handler.heartbeatValue = longArrayOf(10000L, 10000L)
+//        handler.subscriptionRegistry = ThorSubscriptionRegistry()
+//        return handler
+//    }
 
     override fun registerStompEndpoints(registry: StompEndpointRegistry) {
         if (applicationContext != null) {
@@ -82,46 +74,14 @@ class ThorMessageBrokerConfiguration(
     }
 
 
-    override fun createAnnotationMethodMessageHandler(
-        clientInboundChannel: AbstractSubscribableChannel,
-        clientOutboundChannel: AbstractSubscribableChannel,
-        brokerMessagingTemplate: SimpMessagingTemplate
-    ): SimpAnnotationMethodMessageHandler {
-        return ThorAnnotationMethodMessageHandler(
-            clientInboundChannel,
-            clientOutboundChannel,
-            brokerMessagingTemplate
-        )
-    }
-
-    override fun addArgumentResolvers(argumentResolvers: MutableList<HandlerMethodArgumentResolver>) {
-        argumentResolvers.add(SessionIDArgumentResolvers())
-        argumentResolvers.add(PathVariableArgumentResolvers(DefaultConversionService.getSharedInstance()))
-    }
-
     override fun addReturnValueHandlers(returnValueHandlers: MutableList<HandlerMethodReturnValueHandler>) {
         val bean = applicationContext!!.getBean("brokerMessagingTemplate")
         returnValueHandlers.add(ThorMethodReturnValueHandler(bean as SimpMessagingTemplate))
     }
 
 
-    override fun brokerMessagingTemplate(
-        brokerChannel: AbstractSubscribableChannel,
-        clientInboundChannel: AbstractSubscribableChannel,
-        clientOutboundChannel: AbstractSubscribableChannel,
-        brokerMessageConverter: CompositeMessageConverter
-    ): SimpMessagingTemplate {
-        val template = ThorMessagingTemplate(brokerChannel)
-        template.messageConverter = brokerMessageConverter()
-        return template
-    }
 
-    override fun clientOutboundChannelExecutor(): TaskExecutor? {
-        val executor = super.clientInboundChannelExecutor() as ThreadPoolTaskExecutor
-        executor.setQueueCapacity(0)
-        executor.setRejectedExecutionHandler(ThreadPoolExecutor.DiscardPolicy())
-        return executor
-    }
+
 
     override fun clientInboundChannelExecutor(): TaskExecutor {
         val executor = super.clientInboundChannelExecutor() as ThreadPoolTaskExecutor
@@ -130,16 +90,13 @@ class ThorMessageBrokerConfiguration(
         return executor
     }
 
-    override fun clientInboundChannel(clientInboundChannelExecutor: TaskExecutor): AbstractSubscribableChannel {
-        return super.clientInboundChannel(clientInboundChannelExecutor)
-    }
 
-    override fun run(vararg args: String?) {
-        val messageHandler = applicationContext.getBean("simpAnnotationMethodMessageHandler") as MessageHandler
-
-        (applicationContext.getBean("clientInboundChannel") as AbstractSubscribableChannel).addInterceptor(
-            0,
-            UnsubscribeInBoundChannelInterceptor(messageHandler)
-        )
-    }
+//    override fun run(vararg args: String?) {
+//        val messageHandler = applicationContext.getBean("simpAnnotationMethodMessageHandler") as MessageHandler
+//
+//        (applicationContext.getBean("clientInboundChannel") as AbstractSubscribableChannel).addInterceptor(
+//            0,
+//            UnsubscribeInBoundChannelInterceptor(messageHandler)
+//        )
+//    }
 }
