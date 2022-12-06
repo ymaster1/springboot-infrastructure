@@ -7,10 +7,10 @@ import java.net.UnknownHostException;
 /**
  * 获取IP方法
  *
- * @author ruoyi
+ *
  */
 public class IpUtils {
-    public static String getIpAddr(HttpServletRequest request)
+    public static String getIpAddress(HttpServletRequest request)
     {
         if (request == null)
         {
@@ -182,6 +182,6 @@ public class IpUtils {
         catch (UnknownHostException ignored)
         {
         }
-        return "未知";
+        return "unknown";
     }
 }

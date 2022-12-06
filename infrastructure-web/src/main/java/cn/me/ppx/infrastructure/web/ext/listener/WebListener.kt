@@ -26,6 +26,6 @@ ContextClosedEvent
  */
 class WebListener:ApplicationListener<ApplicationStartedEvent> {
     override fun onApplicationEvent(event: ApplicationStartedEvent) {
-        TODO("Not yet implemented")
+
     }
 }

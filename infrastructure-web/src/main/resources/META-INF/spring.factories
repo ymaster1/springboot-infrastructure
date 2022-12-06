@@ -2,8 +2,22 @@ org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
   cn.me.ppx.infrastructure.web.config.InfrastructureWebAutoConfig
 
 org.springframework.boot.diagnostics.FailureAnalyzer=\
-  cn.me.ppx.infrastructure.web.ext.failureAnalyzer.IllegalInjectionFailureAnalyzer,\
-  cn.me.ppx.infrastructure.web.ext.failureAnalyzer.NullPointerFailureAnalyzer
+  cn.me.ppx.infrastructure.web.ext.failureAnalyzer.IllegalArgumentFailureAnalyzer,\
+  cn.me.ppx.infrastructure.web.ext.failureAnalyzer.NullPointerFailureAnalyzer,\
+  cn.me.ppx.infrastructure.web.ext.failureAnalyzer.IllegalStateFailureAnalyzer
 
 org.springframework.boot.env.EnvironmentPostProcessor=\
  cn.me.ppx.infrastructure.web.ext.environmentPostProcessor.WebEnvironmentPostProcessor
+
+org.springframework.boot.BootstrapRegistryInitializer=\
+cn.me.ppx.infrastructure.web.ext.initializer.DemoBootstrapRegistryInitializer
+
+org.springframework.context.ApplicationContextInitializer=\
+cn.me.ppx.infrastructure.web.ext.initializer.PropertiesCheckApplicationContextInitializer,\
+cn.me.ppx.infrastructure.web.ext.initializer.WebInitializer 
+
+org.springframework.context.ApplicationListener=\
+cn.me.ppx.infrastructure.web.ext.listener.WebListener
+
+org.springframework.boot.SpringApplicationRunListener=\
+cn.me.ppx.infrastructure.web.ext.listener.DemoSpringApplicationRunListener

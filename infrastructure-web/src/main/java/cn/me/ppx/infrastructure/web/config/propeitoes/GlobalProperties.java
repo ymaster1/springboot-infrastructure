@@ -7,7 +7,7 @@ import org.springframework.boot.context.properties.ConstructorBinding;
  * @author ym
  * @date 2022/10/29 13:48
  */
-@ConfigurationProperties(prefix = "cn.me.ppx")
+@ConfigurationProperties(prefix = "cn.me.ppx.global")
 @ConstructorBinding
 public class GlobalProperties {
 }

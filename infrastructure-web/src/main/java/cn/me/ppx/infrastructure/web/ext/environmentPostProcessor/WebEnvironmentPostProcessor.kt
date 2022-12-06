@@ -13,7 +13,7 @@ import java.io.IOException
 /**
  * @author  ym
  * @date  2022/10/29 17:41
- * 有些环境变量可能需要在refresh之前被读取到便于使用
+ * 有些环境变量可能需要在refresh之前被读取到便于使用,
  */
 class WebEnvironmentPostProcessor : EnvironmentPostProcessor {
 
@@ -23,6 +23,8 @@ class WebEnvironmentPostProcessor : EnvironmentPostProcessor {
 //        val path: Resource = ClassPathResource("com/example/myapp/config.yml")
 //        val propertySource = loadYaml(path)
 //        environment.propertySources.addLast(propertySource)
+        println("env process")
+//        environment.setRequiredProperties("ppx")
     }
 
     private fun loadYaml(path: Resource): PropertySource<*> {

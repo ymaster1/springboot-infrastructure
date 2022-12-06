@@ -8,8 +8,8 @@ import org.springframework.boot.diagnostics.FailureAnalysis
  * @date  2022/10/29 17:33
  * 监控启动时的非法参数异常
  */
-class IllegalInjectionFailureAnalyzer : AbstractFailureAnalyzer<IllegalArgumentException >() {
-    override fun analyze(rootFailure: Throwable?, cause: IllegalArgumentException ?): FailureAnalysis {
+class IllegalArgumentFailureAnalyzer : AbstractFailureAnalyzer<IllegalArgumentException>() {
+    override fun analyze(rootFailure: Throwable?, cause: IllegalArgumentException?): FailureAnalysis {
         return FailureAnalysis(cause?.message, "Please check injection param!", cause)
     }
 }

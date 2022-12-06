@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.Enumeration;
 import java.util.Set;
 
-import static cn.me.ppx.infrastructure.web.framework.mdc.IpUtils.getIpAddr;
+import static cn.me.ppx.infrastructure.web.framework.mdc.IpUtils.getIpAddress;
 
 
 @Slf4j
@@ -87,7 +87,7 @@ public class RequestContextFilter implements Filter {
             chain.doFilter(request, response);
             return;
         }
-        logBuffer.append(" 客户端请求IP地址:[").append(getIpAddr(req)).append("]");
+        logBuffer.append(" 客户端请求IP地址:[").append(getIpAddress(req)).append("]");
         long start = System.currentTimeMillis();
         // 打印请求参数,看选择吧
         if (logParams) {
