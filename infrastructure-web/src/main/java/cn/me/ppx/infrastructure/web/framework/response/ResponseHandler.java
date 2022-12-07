@@ -54,6 +54,9 @@ public class ResponseHandler implements ResponseBodyAdvice<Object>, WebMvcConfig
      * @param request
      * @param response
      * @return
+     * todo 可以根据需要是否使用标准http响应
+     * @see org.springframework.http.HttpEntity
+     * @see org.springframework.http.ResponseEntity
      */
     @Override
     public Object beforeBodyWrite(Object body, MethodParameter returnType, MediaType selectedContentType, Class<? extends HttpMessageConverter<?>> selectedConverterType, ServerHttpRequest request, ServerHttpResponse response) {

@@ -86,6 +86,15 @@ public class BaseResponse<T> implements Serializable {
         return response;
     }
 
+    public static <T> BaseResponse<T> fail(int errCode, String errMessage,T data) {
+        BaseResponse<T> response = new BaseResponse<>();
+        response.setRequestId(MDCUtils.getMsgId());
+        response.setCode(errCode);
+        response.setMsg(errMessage);
+        response.setData(data);
+        return response;
+    }
+
     public static <T> BaseResponse<T> build(T data) {
         BaseResponse<T> response = new BaseResponse<>();
         response.setRequestId(MDCUtils.getMsgId());

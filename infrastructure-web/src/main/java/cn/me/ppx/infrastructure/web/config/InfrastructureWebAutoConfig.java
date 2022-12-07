@@ -15,6 +15,7 @@ import java.util.Set;
 /**
  * @author ym
  * @date 2022/9/30 12:50
+ * @see <a href="https://springdoc.cn/spring-boot/">...</a>
  */
 @Configuration
 @EnableConfigurationProperties({FilterProperties.class, GlobalProperties.class})
