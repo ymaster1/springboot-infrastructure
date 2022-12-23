@@ -1,7 +1,5 @@
-package me.jinuo.imf.thor.handler
+package cn.me.ppx.infrastructure.websocket.thor.handler
 
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.messaging.Message
 import org.springframework.messaging.MessageChannel
 import org.springframework.messaging.MessageHandler

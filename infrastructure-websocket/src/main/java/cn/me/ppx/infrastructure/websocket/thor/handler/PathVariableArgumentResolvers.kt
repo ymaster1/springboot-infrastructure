@@ -1,6 +1,6 @@
-package me.jinuo.imf.thor.handler
+package cn.me.ppx.infrastructure.websocket.thor.handler
 
-import me.jinuo.imf.thor.annotation.PathVariable
+import cn.me.ppx.infrastructure.websocket.annotation.PathVariable
 import org.springframework.core.MethodParameter
 import org.springframework.core.convert.ConversionService
 import org.springframework.messaging.Message

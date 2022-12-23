@@ -1,4 +1,4 @@
-package me.jinuo.imf.thor.handler
+package cn.me.ppx.infrastructure.websocket.thor.handler
 
 import me.jinuo.imf.thor.annotation.ThorStompController
 import org.springframework.context.ApplicationContext

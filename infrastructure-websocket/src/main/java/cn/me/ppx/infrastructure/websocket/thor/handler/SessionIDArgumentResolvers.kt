@@ -1,6 +1,6 @@
-package me.jinuo.imf.thor.handler
+package cn.me.ppx.infrastructure.websocket.thor.handler
 
-import me.jinuo.imf.thor.annotation.SessionId
+import cn.me.ppx.infrastructure.websocket.annotation.SessionId
 import org.springframework.core.MethodParameter
 import org.springframework.messaging.Message
 import org.springframework.messaging.handler.invocation.HandlerMethodArgumentResolver

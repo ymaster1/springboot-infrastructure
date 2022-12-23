@@ -1,7 +1,7 @@
-package me.jinuo.imf.thor.annotation
+package cn.me.ppx.infrastructure.websocket.thor.annotation
 
 
-import me.jinuo.imf.thor.ThorMessageBrokerConfiguration
+import cn.me.ppx.infrastructure.websocket.thor.ThorMessageBrokerConfiguration
 import org.springframework.context.annotation.Import
 
 @Retention(AnnotationRetention.RUNTIME)

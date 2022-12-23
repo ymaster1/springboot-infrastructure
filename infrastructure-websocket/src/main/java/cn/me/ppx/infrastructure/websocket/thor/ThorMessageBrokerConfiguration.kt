@@ -1,6 +1,6 @@
-package me.jinuo.imf.thor
+package cn.me.ppx.infrastructure.websocket.thor
 
-import me.jinuo.imf.thor.handler.*
+import cn.me.ppx.infrastructure.websocket.thor.handler.*
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.CommandLineRunner
 import org.springframework.context.ApplicationContextAware
@@ -65,7 +65,7 @@ class ThorMessageBrokerConfiguration(
         val handler =
             ThorMessageBrokerHandler(clientInboundChannel, clientOutboundChannel, brokerChannel, mutableListOf())
         val scheduler = ThreadPoolTaskScheduler()
-        scheduler.threadNamePrefix = "MessageBroker-"
+//        scheduler.threadNamePrefix = "MessageBroker-"
         scheduler.poolSize = Runtime.getRuntime().availableProcessors()
         scheduler.isRemoveOnCancelPolicy = true
         scheduler.initialize()

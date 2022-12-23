@@ -1,4 +1,4 @@
-package me.jinuo.imf.thor.handler
+package cn.me.ppx.infrastructure.websocket.thor.handler
 
 import org.springframework.messaging.simp.broker.BrokerAvailabilityEvent
 import org.springframework.web.socket.messaging.SessionConnectedEvent

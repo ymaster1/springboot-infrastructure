@@ -1,4 +1,4 @@
-package me.jinuo.imf.thor.message
+package cn.me.ppx.infrastructure.websocket.thor.message
 
 @Suppress("MemberVisibilityCanBePrivate")
 data class ThorMessage<T>(
@@ -12,23 +12,23 @@ data class ThorMessage<T>(
         const val CODE_DESTINATION_NO_FOUND = 404
         const val CODE_EXCEPTION = 500
 
-        fun success(): ThorMessage<Any>{
+        fun success(): ThorMessage<Any> {
             return ThorMessage(CODE_SUCCESS, "success")
         }
 
-        fun<T> success(data: T?): ThorMessage<T>{
+        fun<T> success(data: T?): ThorMessage<T> {
             return ThorMessage(CODE_SUCCESS, "success", data)
         }
 
-        fun<T> failed(error: T?): ThorMessage<T>{
+        fun<T> failed(error: T?): ThorMessage<T> {
             return ThorMessage(CODE_FAILED, "client exception", error)
         }
 
-        fun notFound(): ThorMessage<Any>{
+        fun notFound(): ThorMessage<Any> {
             return ThorMessage(CODE_DESTINATION_NO_FOUND, "destination not found")
         }
 
-        fun exception(): ThorMessage<Any>{
+        fun exception(): ThorMessage<Any> {
             return ThorMessage(CODE_EXCEPTION, "server exception")
         }
 

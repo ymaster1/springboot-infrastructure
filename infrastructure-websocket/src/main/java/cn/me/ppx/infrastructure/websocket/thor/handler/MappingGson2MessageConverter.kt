@@ -1,4 +1,4 @@
-package me.jinuo.imf.thor.handler
+package cn.me.ppx.infrastructure.websocket.thor.handler
 
 import com.google.gson.Gson
 import org.springframework.beans.factory.annotation.Autowired

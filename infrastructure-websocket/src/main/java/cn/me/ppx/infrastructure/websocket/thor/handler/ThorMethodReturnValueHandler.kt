@@ -1,9 +1,9 @@
-package me.jinuo.imf.thor.handler
+package cn.me.ppx.infrastructure.websocket.thor.handler
 
+import cn.me.ppx.infrastructure.websocket.thor.message.ThorMessage
 import me.jinuo.imf.thor.annotation.ThorRequestMapping
 import me.jinuo.imf.thor.annotation.ThorSubscribeMapping
 import me.jinuo.imf.thor.annotation.ThorUnSubscribeMapping
-import me.jinuo.imf.thor.message.ThorMessage
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.core.MethodParameter
 import org.springframework.messaging.Message
