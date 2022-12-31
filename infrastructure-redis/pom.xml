@@ -15,7 +15,7 @@
     <name>infrastructure-redis</name>
     <description>infrastructure-redis</description>
     <properties>
-        <java.version>1.8</java.version>
+        <java.version>11</java.version>
     </properties>
     <dependencies>
         <!--自定义配置文件元数据提示-->
